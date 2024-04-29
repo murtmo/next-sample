@@ -1,9 +1,23 @@
+'use client'
+import { useState, useEffect } from 'react';
+
+import Loading from './loading';
 import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const [ isShowLoading, setIsShowLoading ] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('loading done');
+      setIsShowLoading(false); // ローディング完了
+    }, 1000);
+  });
+
   return (
     <main className={styles.main}>
+      <Loading isShow={ isShowLoading }/>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
